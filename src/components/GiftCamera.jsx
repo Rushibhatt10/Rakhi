@@ -71,8 +71,8 @@ function GiftCamera({ onOpenChange, onReveal }) {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
           facingMode: { ideal: requestedFacingMode },
-          width: { ideal: 1080 },
-          height: { ideal: 1920 },
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
         },
         audio: false,
       });
