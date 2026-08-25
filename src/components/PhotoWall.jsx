@@ -10,7 +10,7 @@ function PhotoWall() {
   return (
     <section id="photos" className="section">
       <h2>Us ♡</h2>
-      <p>{siteConfig.photos.length} little pieces of chaos, memories &amp; good vibes.</p>
+      <p>little pieces of chaos, memories &amp; good vibes.</p>
       <div className="photoGrid">
         {siteConfig.photos.map((photo, index) => <PhotoCard key={photo.src} photo={photo} index={index} onSelect={setSelected} />)}
       </div>

@@ -18,7 +18,6 @@ function PhotoCard({ photo, index, onSelect }) {
         />}
         <span className="assetFallback">memory<br />{String(index + 1).padStart(2, '0')}</span>
       </span>
-      <span className="photoNumber">{String(index + 1).padStart(2, '0')}</span>
     </button>
   );
 }

@@ -764,6 +764,14 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
 .cameraActions { display: flex; align-items: center; justify-content: space-between; width: min(390px, 100%); margin: 22px auto 0; }.cameraActionsPlain { justify-content: center; }.magicButton, .roundControl { min-height: 48px; border: 1px solid rgba(255,255,255,.3); border-radius: 99px; padding: 0 16px; color: #fff9fb; background: rgba(255,255,255,.09); cursor: pointer; }.magicButton.active { color: #100d18; background: #ffb1d8; box-shadow: 0 0 26px rgba(255,139,201,.5); }.roundControl { width: 48px; padding: 0; border-radius: 50%; font-size: 21px; }.captureButton { width: 78px; height: 78px; display: grid; place-items: center; border: 4px solid #fff9fb; border-radius: 50%; background: transparent; cursor: pointer; box-shadow: 0 0 0 7px rgba(255,255,255,.12), 0 0 32px rgba(255,139,201,.35); }.captureButton span { width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, #ff8bc9, #d76cff); transition: transform .2s ease; }.captureButton:hover span { transform: scale(.86); }.cameraHint { color: #c9c0d5; font: 11px 'DM Mono', monospace; letter-spacing: .08em; }.cameraLoading, .cameraFallback { display: grid; place-items: center; gap: 18px; min-height: 60dvh; color: #ffb1d8; font-family: 'DM Mono', monospace; text-align: center; }.cameraFallback strong { font-size: clamp(1.4rem, 5vw, 2.5rem); }.cameraFallback span { color: #c9c0d5; }.loaderRing { width: 45px; height: 45px; border: 2px solid rgba(139,245,255,.2); border-top-color: #8bf5ff; border-radius: 50%; animation: spin 1s linear infinite; }
 .magicViewport { isolation: isolate; background: #05040a; }
 .magicViewport video { position: relative; z-index: 1; background: #05040a; }
+.magicViewport { touch-action: none; }
+.cameraControl { min-width: 44px; min-height: 44px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; color: #fff9fb; background: rgba(255,255,255,.09); cursor: pointer; font-size: 24px; line-height: 1; }
+.cameraControl:disabled { opacity: .35; cursor: not-allowed; }
+.zoomIndicator { min-width: 48px; color: #8bf5ff; font: 11px 'DM Mono', monospace; text-align: center; }
+.boothCountdown { position: absolute; z-index: 4; inset: 0; display: grid; place-content: center; gap: 10px; color: #fff; background: rgba(10, 7, 18, .18); pointer-events: none; text-align: center; text-shadow: 0 0 25px #ff8bc9; }
+.boothCountdown span { color: #8bf5ff; font: 11px 'DM Mono', monospace; letter-spacing: .18em; }
+.boothCountdown strong { color: #ffb1d8; font-size: clamp(5rem, 25vw, 11rem); line-height: .85; animation: countdownPop .8s ease both; }
+@keyframes countdownPop { from { opacity: 0; transform: scale(1.35); } to { opacity: 1; transform: scale(1); } }
 
 /* Shared glass language for cards, controls, and mobile surfaces. */
 :root { --glass: rgba(255,255,255,.075); --glass-strong: rgba(255,255,255,.12); --glass-line: rgba(255,255,255,.2); --glass-blur: 18px; }
