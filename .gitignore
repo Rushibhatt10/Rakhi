@@ -1,0 +1,4 @@
+node_modules/
+dist/
+.codex_frames/
+.DS_Store
