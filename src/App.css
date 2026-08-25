@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800;900&display=swap');
 
-:root { font-family: 'Manrope', sans-serif; color: #fff9fb; background: #100d18; font-synthesis: none; text-rendering: optimizeLegibility; }
 :root {
   font-family: 'Manrope', sans-serif;
   color: #fff9fb;
@@ -16,22 +14,17 @@
   --primary-glow: #ff4da6;
   --neon-cyan: #00f5ff;
   --electric-purple: #a855f7;
+  --warm-gold: #ffd166;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; min-width: 320px; background: #100d18; }
 body { margin: 0; min-width: 320px; background: #0c0914; color: #fff9fb; }
 body.cameraModalOpen { overflow: hidden; }
 button { font: inherit; }
-button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
-.site { min-height: 100dvh; overflow: hidden; position: relative; background: radial-gradient(circle at 80% 8%, #542a68 0, transparent 29rem), radial-gradient(circle at 6% 48%, #152f55 0, transparent 32rem), #100d18; }
-.site::before { content: ''; position: fixed; z-index: 5; inset: 0; pointer-events: none; opacity: .055; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E"); }
-.navbar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 22px 6vw; border-bottom: 1px solid rgba(255,255,255,.12); background: rgba(16,13,24,.72); backdrop-filter: blur(18px); }
-.logo { color: #ff8bc9; font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: .12em; }
-.logo span { color: #fff9fb; }
 button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px; }
 
+/* Site Background & Ambient Aura */
 .site {
   min-height: 100dvh;
   overflow: hidden;
@@ -53,6 +46,7 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
 }
 
+/* Navbar */
 .navbar {
   position: sticky;
   top: 0;
@@ -78,30 +72,6 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
 .logo span { color: #ffffff; text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
 
 .navLinks { display: flex; align-items: center; gap: 17px; }
-.navLinks > button { border: 0; color: #c9c0d5; background: transparent; cursor: pointer; font-size: 11px; }
-.navLinks > button:hover { color: #8bf5ff; }
-.navButton, .primary { border: 1px solid #ff8bc9; border-radius: 999px; color: #ffb1d8; background: transparent; cursor: pointer; font-size: 10px; letter-spacing: .1em; padding: 11px 17px; transition: transform .25s ease, color .25s ease, background .25s ease, box-shadow .25s ease; }
-.navButton:hover, .primary:hover { color: #100d18; background: #ff8bc9; box-shadow: 0 8px 35px rgba(255,139,201,.38); transform: translateY(-3px); }
-.hero { position: relative; min-height: calc(100dvh - 68px); display: grid; place-items: center; padding: 10vh 6vw 17vh; text-align: center; }
-.hero::after { content: ''; position: absolute; width: 35vw; height: 35vw; right: 5%; top: 15%; border-radius: 50%; background: #d76cff; opacity: .22; filter: blur(100px); pointer-events: none; }
-.heroContent { position: relative; z-index: 1; max-width: 760px; animation: rise .8s ease-out both; }
-.tag, .nowPlaying, .photoNumber, .boothTopline { color: #8bf5ff; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .13em; text-transform: uppercase; }
-.hero h1 { margin: 24px 0; font-size: clamp(4rem, 11vw, 9.5rem); line-height: .86; letter-spacing: -.08em; }
-.hero h1 span { color: #ff8bc9; }
-.subtitle, .section > p { color: #c9c0d5; font-size: 16px; line-height: 1.7; }
-.hero .primary { margin-top: 18px; }
-.section { position: relative; max-width: 1120px; margin: auto; padding: 110px 6vw; text-align: center; }
-.section h2 { margin: 0 0 10px; color: #ffb1d8; font-size: clamp(2rem, 5vw, 4rem); letter-spacing: -.07em; }
-.photoGrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px 14px; margin: 45px 0; }
-.photoCard { position: relative; min-width: 0; padding: 9px 9px 13px; border: 0; color: #100d18; background: #fff9fb; cursor: pointer; box-shadow: 0 14px 28px rgba(0,0,0,.35); text-align: left; transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease; }
-.photoCard-0, .photoCard-3 { transform: rotate(-3deg); } .photoCard-1, .photoCard-4 { transform: rotate(2deg) translateY(8px); } .photoCard-2, .photoCard-5 { transform: rotate(-1deg) translateY(-5px); }
-.photoCard:hover { z-index: 2; transform: rotate(0) translateY(-9px) scale(1.05); box-shadow: 0 20px 42px rgba(255,139,201,.34); }
-.photoImageWrap { position: relative; display: block; min-height: 180px; overflow: hidden; background: linear-gradient(135deg, #522f6c, #0d314b); }
-.photoCard img { position: relative; z-index: 1; display: block; width: 100%; height: auto; object-fit: contain; }
-.lightboxImageWrap img, .boothFrame img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; }
-.assetFallback { position: absolute; z-index: 0; inset: 0; display: grid; place-content: center; color: #8bf5ff; font-family: 'DM Mono', monospace; font-size: 12px; line-height: 1.6; text-align: center; text-transform: uppercase; }
-.photoCaption { display: block; padding-top: 10px; font-family: 'DM Mono', monospace; font-size: 9px; }
-.photoNumber { position: absolute; top: -10px; right: -7px; padding: 5px 7px; color: #100d18; background: #8bf5ff; font-size: 8px; }
 .navLinks > button {
   border: 0;
   color: #ded6ed;
@@ -116,6 +86,7 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
   text-shadow: 0 0 12px var(--neon-cyan);
 }
 
+/* Buttons */
 .navButton, .primary {
   border: 1px solid #ff4db8;
   border-radius: 999px;
@@ -137,6 +108,7 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
   transform: translateY(-3px) scale(1.03);
 }
 
+/* Hero */
 .hero {
   position: relative;
   min-height: calc(100dvh - 68px);
@@ -203,6 +175,7 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
 
 .hero .primary { margin-top: 22px; padding: 15px 32px; font-size: 12px; }
 
+/* Sections */
 .section {
   position: relative;
   max-width: 1120px;
@@ -235,6 +208,7 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
   filter: drop-shadow(0 0 22px rgba(255, 77, 166, 0.6));
 }
 
+/* Photo Wall */
 .photoGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -285,14 +259,6 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
   object-fit: contain;
 }
 
-.lightboxImageWrap img, .boothFrame img {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .assetFallback {
   position: absolute;
   z-index: 0;
@@ -329,119 +295,744 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
   box-shadow: 0 0 14px var(--neon-cyan);
 }
 
-.boothButton { margin-top: 5px; }
-.cameraFrame { max-width: 580px; margin: 34px auto 0; padding: 15px; border: 1px solid rgba(255,255,255,.2); border-radius: 24px; background: rgba(255,255,255,.07); box-shadow: 0 20px 80px rgba(0,0,0,.25); backdrop-filter: blur(20px); }
-.cameraViewport { position: relative; overflow: hidden; min-height: 310px; border-radius: 16px; background: #0b0b12; }
-button { font: inherit; }
-button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
+/* ===================================================
+   DIGITAL PHOTOBOOTH & GIFT CAMERA EXPERIENCE
+   =================================================== */
 
-.cameraViewport video { display: block; width: 100%; min-height: 310px; object-fit: cover; transform: scaleX(-1); }
-.cameraPlaceholder { display: grid; min-height: 310px; place-content: center; gap: 10px; color: #c9c0d5; font-family: 'DM Mono', monospace; font-size: 13px; }
-.cameraPlaceholder small { color: #ffb1d8; font-family: 'Manrope', sans-serif; font-size: 12px; }
-.liveBadge { position: absolute; top: 15px; left: 15px; padding: 6px 9px; border-radius: 99px; color: #fff; background: rgba(16,13,24,.7); font: 10px 'DM Mono', monospace; }
-.liveBadge i { display: inline-block; width: 6px; height: 6px; margin-right: 5px; border-radius: 50%; background: #ff547f; }
-.cameraControls, .musicControls { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 18px 0 4px; }
-.cameraControls > button:not(.primary), .musicControls button, .boothControls button { min-width: 44px; min-height: 44px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; color: #fff9fb; background: rgba(255,255,255,.08); cursor: pointer; }
-.cameraControls > button:hover, .musicControls button:hover, .boothControls button:hover { border-color: #8bf5ff; color: #8bf5ff; }
-.cameraFrame {
-  max-width: 580px;
-  margin: 34px auto 0;
-  padding: 16px;
-  border: 1.5px solid rgba(255, 102, 178, 0.4);
-  border-radius: 26px;
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.35), 0 0 40px rgba(255, 46, 147, 0.25);
-  backdrop-filter: blur(22px);
+.openGiftCam { margin-top: 22px; padding: 16px 28px; }
+
+.cameraExperience {
+  position: fixed;
+  z-index: 99999;
+  isolation: isolate;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: max(20px, env(safe-area-inset-top)) 5vw max(24px, env(safe-area-inset-bottom));
+  background: radial-gradient(circle at 50% 15%, #2a0b3d 0%, #0c0914 65%, #05040a 100%);
+  opacity: 1;
+  animation: fadeIn .3s ease both;
+}
+
+.cameraHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 980px;
+  width: 100%;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+.cameraHeader h3 {
+  margin: 6px 0 3px;
+  color: #fff9fb;
+  font-size: clamp(1.5rem, 4vw, 2.6rem);
+  letter-spacing: -.06em;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 0%, #ff80bf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(255, 46, 147, 0.5));
+}
+.cameraHeader p { margin: 0; color: #ded6ed; font-size: 13px; }
+.cameraHeader > button {
+  border: 0;
+  color: #fff9fb;
+  background: transparent;
+  cursor: pointer;
+  font-size: 38px;
+  line-height: 1;
+  transition: transform .2s ease, color .2s ease;
+}
+.cameraHeader > button:hover { color: var(--primary-pink); transform: scale(1.15); }
+
+.cameraStage {
+  width: min(680px, 100%);
+  margin: 2vh auto 0;
+  text-align: center;
 }
 
 .cameraViewport {
   position: relative;
+  width: 100%;
+  height: min(65dvh, 640px);
   overflow: hidden;
-  min-height: 310px;
-  border-radius: 18px;
-  background: #08060e;
+  border-radius: 26px;
+  border: 2px solid rgba(255, 77, 166, 0.6);
+  background: #05040a;
+  box-shadow: 0 0 50px rgba(255, 46, 147, 0.35), 0 0 25px rgba(0, 245, 255, 0.25);
 }
 
 .cameraViewport video {
   display: block;
   width: 100%;
-  min-height: 310px;
+  height: 100%;
   object-fit: cover;
+}
+.cameraViewport video.mirrored {
   transform: scaleX(-1);
 }
 
-.cameraPlaceholder {
-  display: grid;
-  min-height: 310px;
-  place-content: center;
-  gap: 10px;
-  color: #ded6ed;
-  font-family: 'DM Mono', monospace;
-  font-size: 13px;
-}
-.cameraPlaceholder small { color: #ff66b2; font-family: 'Manrope', sans-serif; font-size: 13px; }
-
-.liveBadge {
+/* Realistic Camera Flash */
+.photoFlash {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  padding: 6px 10px;
-  border-radius: 99px;
-  color: #fff;
-  background: rgba(12, 9, 20, 0.85);
-  border: 1px solid rgba(255, 46, 147, 0.4);
-  box-shadow: 0 0 15px rgba(255, 46, 147, 0.4);
-  font: 10px 'DM Mono', monospace;
-  font-weight: 600;
+  z-index: 50;
+  inset: 0;
+  background: #ffffff;
+  animation: flash .16s ease-out both;
+  pointer-events: none;
 }
-.liveBadge i {
-  display: inline-block;
+
+/* In-Camera HUD Overlay */
+.cameraOverlay {
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  pointer-events: none;
+}
+
+.boothHudTop {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cameraBrand {
+  color: var(--neon-cyan);
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: .14em;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px var(--neon-cyan);
+}
+
+.shotCounter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(12, 9, 20, 0.85);
+  border: 1px solid rgba(255, 77, 166, 0.45);
+  border-radius: 99px;
+  padding: 6px 12px;
+  box-shadow: 0 0 16px rgba(255, 46, 147, 0.4);
+}
+
+.shotText {
+  color: #ffffff;
+  font: 11px 'DM Mono', monospace;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.shotDots {
+  display: flex;
+  gap: 5px;
+}
+.shotDot {
   width: 7px;
   height: 7px;
-  margin-right: 6px;
   border-radius: 50%;
-  background: #ff0055;
-  box-shadow: 0 0 10px #ff0055;
+  background: rgba(255, 255, 255, 0.25);
+  transition: all .25s ease;
+}
+.shotDot.active {
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
+  transform: scale(1.2);
 }
 
-.cameraControls, .musicControls {
+.boothPromptBanner {
+  position: absolute;
+  top: 66px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 14px;
-  margin: 18px 0 4px;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 99px;
+  background: rgba(12, 9, 20, 0.88);
+  border: 1.5px solid var(--primary-pink);
+  box-shadow: 0 0 24px rgba(255, 46, 147, 0.6);
+  white-space: nowrap;
+}
+.promptEmoji { font-size: 14px; }
+.promptText {
+  color: #ffffff;
+  font: 13px 'Manrope', sans-serif;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
-.cameraControls > button:not(.primary), .musicControls button, .boothControls button {
-  min-width: 46px;
-  min-height: 46px;
-  border: 1.5px solid rgba(255, 102, 178, 0.45);
+.boothCountdownOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.countdownNumber {
+  color: #ffffff;
+  font-size: clamp(4.5rem, 14vw, 7.5rem);
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 0 0 35px var(--neon-cyan), 0 0 60px var(--primary-pink);
+  animation: popIn .5s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.boothHudBottom {
+  position: absolute;
+  bottom: 18px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cameraStatus {
+  color: var(--neon-cyan);
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: .12em;
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--neon-cyan);
+}
+.presenceText {
+  color: #ff80bf;
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: .12em;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(255, 128, 191, 0.6);
+}
+
+.corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: #ff3399;
+  border-style: solid;
+  opacity: .95;
+  filter: drop-shadow(0 0 8px #ff3399);
+}
+.cornerTopLeft { top: 16px; left: 16px; border-width: 3px 0 0 3px; border-top-left-radius: 8px; }
+.cornerTopRight { top: 16px; right: 16px; border-width: 3px 3px 0 0; border-top-right-radius: 8px; }
+.cornerBottomLeft { bottom: 16px; left: 16px; border-width: 0 0 3px 3px; border-bottom-left-radius: 8px; }
+.cornerBottomRight { right: 16px; bottom: 16px; border-width: 0 3px 3px 0; border-bottom-right-radius: 8px; }
+
+.sparkle {
+  position: absolute;
+  color: #ff4da6;
+  font-size: 20px;
+  text-shadow: 0 0 14px #ff4da6;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+.sparkleOne { top: 22%; right: 14%; }
+.sparkleTwo { bottom: 24%; left: 14%; animation-delay: .6s; }
+
+/* Camera Controls Bar */
+.cameraActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(390px, 100%);
+  margin: 18px auto 0;
+}
+
+.zoomControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 102, 178, 0.35);
+  border-radius: 99px;
+  padding: 4px 8px;
+}
+
+.zoomIndicator {
+  color: var(--neon-cyan);
+  font: 11px 'DM Mono', monospace;
+  font-weight: 700;
+  min-width: 34px;
+}
+
+.roundControl {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
   border-radius: 50%;
-  color: #fff9fb;
-  background: rgba(255, 20, 147, 0.12);
+  font-size: 20px;
+  border: 1.5px solid rgba(0, 245, 255, 0.45);
+  color: #ffffff;
+  background: rgba(0, 245, 255, 0.12);
   cursor: pointer;
   transition: all .25s ease;
 }
+.roundControl:hover:not(:disabled) {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 22px var(--neon-cyan);
+  transform: scale(1.08);
+}
+.roundControl:disabled { opacity: .4; cursor: not-allowed; }
 
-.cameraControls > button:hover, .musicControls button:hover, .boothControls button:hover {
+.startBoothBtn {
+  width: min(100%, 360px);
+  min-height: 52px;
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.cameraHint {
+  color: #ded6ed;
+  font: 12px 'DM Mono', monospace;
+  letter-spacing: .08em;
+  margin-top: 12px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.cameraLoading, .cameraFallback {
+  display: grid;
+  place-items: center;
+  gap: 18px;
+  min-height: 50dvh;
+  color: #ff66b2;
+  font-family: 'DM Mono', monospace;
+  text-align: center;
+}
+.cameraFallback strong {
+  font-size: clamp(1.4rem, 5vw, 2.4rem);
+  color: #ffffff;
+  text-shadow: 0 0 25px rgba(255, 46, 147, 0.7);
+}
+.cameraFallback span { color: #ded6ed; }
+.cameraFallbackActions { display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
+
+.loaderRing {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(0, 245, 255, 0.25);
+  border-top-color: var(--neon-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--neon-cyan);
+  animation: spin 1s linear infinite;
+}
+
+/* ===================================================
+   PHOTOBOOTH RESULT STAGE & EDITOR
+   =================================================== */
+
+.resultStage {
+  width: min(1080px, 100%);
+  margin: 1vh auto 20px;
+}
+
+.photoboothResultScreen {
+  width: 100%;
+}
+
+.photoboothHeading {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.boothPill {
+  display: inline-block;
+  color: var(--neon-cyan);
+  font: 11px 'DM Mono', monospace;
+  font-weight: 700;
+  letter-spacing: .14em;
+  background: rgba(0, 245, 255, 0.12);
+  border: 1px solid rgba(0, 245, 255, 0.4);
+  border-radius: 99px;
+  padding: 6px 14px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 16px rgba(0, 245, 255, 0.3);
+}
+
+.photoboothHeading h3 {
+  margin: 4px 0 6px;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: -.05em;
+  background: linear-gradient(135deg, #ff4da6 0%, #ff80bf 50%, #00f5ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 22px rgba(255, 77, 166, 0.6));
+}
+
+.photoboothHeading p {
+  margin: 0;
+  color: #ded6ed;
+  font-size: 14px;
+}
+
+.photoboothMainGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Photobooth Canvas Display */
+.photoboothPreviewCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photoboothCanvasWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 22px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 102, 178, 0.45);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 46, 147, 0.3);
+  backdrop-filter: blur(20px);
+  transition: transform .3s ease;
+}
+
+.photoboothCanvasWrapper.layout-horizontal {
+  max-width: 520px;
+}
+
+.photoboothCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.canvasLoadingSpinner {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: rgba(12, 9, 20, 0.85);
+  border-radius: 22px;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  color: var(--neon-cyan);
+  font: 11px 'DM Mono', monospace;
+}
+
+/* Editor Panel */
+.photoboothControlsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.photoboothEditor {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 102, 178, 0.35);
+  border-radius: 22px;
+  padding: 22px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.35);
+}
+
+.editorTabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 12px;
+}
+
+.editorTabBtn {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 99px;
+  padding: 10px 14px;
+  color: #ded6ed;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  transition: all .2s ease;
+}
+
+.editorTabBtn.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff1493, #d946ef);
+  border-color: var(--primary-glow);
+  box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
+}
+
+.editorSection {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.editorControlGroup, .editorField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.editorLabel {
+  color: var(--neon-cyan);
+  font: 11px 'DM Mono', monospace;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+}
+
+/* Layout Choice Grid */
+.layoutChoiceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.layoutChoiceBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  padding: 12px 8px;
+  color: #fff9fb;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.layoutChoiceBtn.active {
+  border-color: var(--primary-pink);
+  background: rgba(255, 46, 147, 0.2);
+  box-shadow: 0 0 20px rgba(255, 46, 147, 0.4);
+}
+
+.layoutIcon {
+  font-size: 18px;
+  color: var(--neon-cyan);
+}
+
+.layoutName {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Theme Choice Grid */
+.themeChoiceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.themeChoiceBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 8px 10px;
+  color: #fff9fb;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all .2s ease;
+}
+
+.themeChoiceBtn.active {
+  border-color: var(--neon-cyan);
+  background: rgba(0, 245, 255, 0.15);
+  box-shadow: 0 0 18px rgba(0, 245, 255, 0.4);
+}
+
+.themeColorDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Filter Choice Grid */
+.filterChoiceGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filterChoiceBtn {
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 99px;
+  padding: 7px 14px;
+  color: #fff9fb;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all .2s ease;
+}
+
+.filterChoiceBtn.active {
+  color: #0c0914;
+  background: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 16px var(--neon-cyan);
+}
+
+/* Form Inputs */
+.inputWithClear {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.editorField input {
+  width: 100%;
+  border: 1.5px solid rgba(255, 102, 178, 0.4);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: #fff9fb;
+  background: rgba(255, 255, 255, 0.08);
+  font: 13px 'Manrope', sans-serif;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.editorField input:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 18px rgba(0, 245, 255, 0.5);
+}
+
+.inputClearBtn {
+  position: absolute;
+  right: 12px;
+  border: 0;
+  color: #ded6ed;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Preset Chips */
+.quickPresetRow {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.quickPresetTitle {
+  color: #ff80bf;
+  font: 10px 'DM Mono', monospace;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.presetChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.presetChip {
+  border: 1px solid rgba(255, 128, 191, 0.35);
+  border-radius: 99px;
+  padding: 5px 10px;
+  color: #ded6ed;
+  background: rgba(255, 20, 147, 0.1);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all .2s ease;
+}
+
+.presetChip:hover {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  background: rgba(0, 245, 255, 0.15);
+}
+
+.presetChip.active {
+  color: #ffffff;
+  background: var(--primary-pink);
+  border-color: var(--primary-pink);
+  box-shadow: 0 0 12px var(--primary-pink);
+}
+
+/* Action Group */
+.photoboothActionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.downloadActionBtn {
+  width: 100%;
+  min-height: 52px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.secondaryActionRow {
+  display: flex;
+  gap: 12px;
+}
+
+.secondaryActionBtn {
+  flex: 1;
+  min-height: 48px;
+  border: 1.5px solid rgba(255, 102, 178, 0.45);
+  border-radius: 99px;
+  padding: 10px 16px;
+  color: #ff99d6;
+  background: rgba(255, 20, 147, 0.12);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  transition: all .25s ease;
+  text-align: center;
+}
+
+.secondaryActionBtn:hover {
   border-color: var(--neon-cyan);
   color: var(--neon-cyan);
   background: rgba(0, 245, 255, 0.18);
-  box-shadow: 0 0 20px rgba(0, 245, 255, 0.6);
-  transform: scale(1.08);
+  box-shadow: 0 0 22px rgba(0, 245, 255, 0.5);
+  transform: translateY(-2px);
 }
 
-.unlockButton { display: block; margin: 18px auto 5px; }
-.unlockButton:disabled { opacity: .8; cursor: wait; }
-.capturePreview { width: 90px; margin-top: 14px; border: 3px solid #ffb1d8; border-radius: 8px; }
-.textButton { border: 0; color: #8bf5ff; background: transparent; cursor: pointer; font: 10px 'DM Mono', monospace; letter-spacing: .1em; }
-.giftCard { max-width: 580px; margin: auto; padding: 58px 30px; border: 1px solid rgba(255,177,216,.7); border-radius: 25px; background: linear-gradient(130deg, rgba(255,139,201,.18), rgba(139,245,255,.12)); box-shadow: 0 0 80px rgba(215,108,255,.16); backdrop-filter: blur(18px); animation: reveal .7s ease both; }
-.giftCard small { color: #8bf5ff; font: 10px 'DM Mono', monospace; letter-spacing: .14em; }.giftCard h1 { margin: 18px 0 10px; color: #ffb1d8; font-size: clamp(4rem, 10vw, 7rem); letter-spacing: -.08em; }.giftCard p { color: #c9c0d5; }
-.musicPlayer { max-width: 600px; margin: 35px auto 0; padding: 22px; border: 1px solid rgba(139,245,255,.3); border-radius: 18px; background: rgba(139,245,255,.06); }.nowPlaying { display: block; color: #8bf5ff; }.nowPlaying strong { display: block; margin-top: 8px; color: #fff9fb; font: 18px 'Manrope', sans-serif; letter-spacing: 0; text-transform: none; }.musicControls { margin-bottom: 0; }
-.final { padding-bottom: 145px; }.final p { max-width: 430px; margin: 14px auto; }.replayButton { margin-top: 28px; }
-.capturePreview { width: 90px; margin-top: 14px; border: 3px solid #ff4da6; border-radius: 8px; box-shadow: 0 0 16px rgba(255, 77, 166, 0.5); }
-.textButton { border: 0; color: var(--neon-cyan); background: transparent; cursor: pointer; font: 11px 'DM Mono', monospace; letter-spacing: .12em; font-weight: 600; text-shadow: 0 0 10px var(--neon-cyan); }
-.textButton:hover { color: #ffffff; text-shadow: 0 0 16px var(--neon-cyan); }
+.giftUnlockAction {
+  border-color: #ff7a45;
+  color: var(--warm-gold);
+  background: rgba(255, 122, 69, 0.14);
+}
+.giftUnlockAction:hover {
+  border-color: var(--warm-gold);
+  color: #ffffff;
+  background: #ff7a45;
+  box-shadow: 0 0 25px rgba(255, 122, 69, 0.6);
+}
+
+/* ===================================================
+   GIFT REVEAL CARD & MUSIC PLAYER & LIGHTBOX
+   =================================================== */
 
 .giftCard {
   max-width: 580px;
@@ -495,23 +1086,37 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
   text-transform: none;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
-.musicControls { margin-bottom: 0; }
+.musicControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 18px 0 0;
+}
+.musicControls button {
+  min-width: 46px;
+  min-height: 46px;
+  border: 1.5px solid rgba(0, 245, 255, 0.45);
+  border-radius: 50%;
+  color: #fff9fb;
+  background: rgba(0, 245, 255, 0.12);
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.musicControls button:hover {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  background: rgba(0, 245, 255, 0.22);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.6);
+  transform: scale(1.08);
+}
 
 .final { padding-bottom: 145px; }
 .final p { max-width: 480px; margin: 16px auto; font-size: 17px; color: #ded6ed; }
 .replayButton { margin-top: 30px; }
 
-.photoFlash { position: absolute; z-index: 5; inset: 0; background: #fff; animation: flash .15s ease-out both; pointer-events: none; }
-.lightbox, .boothOverlay { position: fixed; z-index: 99999; inset: 0; display: grid; place-items: center; padding: 30px; background: rgba(9,7,15,.92); backdrop-filter: blur(20px); animation: fadeIn .25s ease both; }.lightboxContent { width: min(720px, 90vw); text-align: center; }.lightboxImageWrap { position: relative; height: min(70vh, 620px); background: #1a1225; }.lightboxContent p { color: #ffb1d8; font-size: 18px; }.lightboxContent small { color: #8bf5ff; font: 11px 'DM Mono', monospace; }.closeButton { position: absolute; top: 24px; right: 28px; border: 0; color: #fff; background: transparent; cursor: pointer; font-size: 36px; }.lightboxArrow { position: absolute; top: 50%; border: 0; color: #fff; background: transparent; cursor: pointer; font-size: 35px; }.lightboxPrev { left: 5vw; }.lightboxNext { right: 5vw; }
-.boothOverlay { display: block; overflow: auto; padding: 28px 6vw; background: radial-gradient(circle at 50% 50%, #332253, #0d0b14 70%); }.boothTopline { display: flex; justify-content: space-between; color: #8bf5ff; }.boothTopline button { border: 0; color: #ffb1d8; background: transparent; cursor: pointer; font: 10px 'DM Mono', monospace; }.boothContent { max-width: 620px; margin: 8vh auto; text-align: center; }.boothFrame { position: relative; height: min(58vh, 550px); padding: 12px; border: 1px solid #8bf5ff; background: #191126; box-shadow: 0 0 45px rgba(139,245,255,.2); }.boothFrame img { position: relative; z-index: 1; }.boothScanline { position: absolute; z-index: 2; left: 0; right: 0; top: 50%; height: 2px; background: #8bf5ff; opacity: .6; animation: scan 2.5s ease-in-out infinite; }.boothCaption { color: #ffb1d8; }.boothControls { display: flex; justify-content: center; align-items: center; gap: 30px; color: #8bf5ff; font: 12px 'DM Mono', monospace; }.randomButton { margin-top: 22px; border: 1px solid #d76cff; border-radius: 99px; padding: 11px 16px; color: #dca8ff; background: transparent; cursor: pointer; font: 10px 'DM Mono', monospace; }.boothFlash { position: fixed; z-index: 40; inset: 0; background: #fff; animation: flash .18s ease-out both; }
-.giftBurst { position: fixed; z-index: 25; inset: 0; overflow: hidden; pointer-events: none; perspective: 700px; }.giftObject { position: absolute; left: 50%; top: 50%; width: clamp(82px, 12vw, 160px); height: clamp(72px, 10vw, 132px); display: grid; place-items: center; background: transparent; animation: fly var(--gift-duration, var(--burst-duration, 30000ms)) cubic-bezier(.12,.7,.25,1) var(--gift-delay, 0s) both; will-change: transform, opacity; }.giftObject img { display: block; width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 10px 12px rgba(0,0,0,.45)); }
-@keyframes rise { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } } @keyframes reveal { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: scale(1); } } @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } @keyframes flash { from { opacity: .9; } to { opacity: 0; } } @keyframes scan { 50% { transform: translateY(120px); } } @keyframes fly { 0% { opacity: 0; transform: translate3d(0,0,-500px) scale(.1) rotate(0); } 18% { opacity: 1; } 100% { opacity: 0; transform: translate3d(var(--x), var(--y), 400px) scale(3.8) rotate(var(--r)); } }
-@media (max-width: 760px) { .navbar { padding: 18px 5vw; }.navLinks { gap: 8px; }.navLinks > button:not(.navButton) { display: none; }.navButton { padding: 10px 12px; font-size: 9px; }.hero { padding-inline: 5vw; }.section { padding: 80px 5vw; }.photoGrid { grid-template-columns: repeat(2, 1fr); gap: 18px 12px; }.photoCard-4, .photoCard-5 { display: block; }.cameraViewport, .cameraViewport video, .cameraPlaceholder { min-height: 250px; }.lightbox { padding: 18px; }.lightboxArrow { font-size: 27px; }.lightboxPrev { left: 10px; }.lightboxNext { right: 10px; } }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
-.magicViewport { display: grid; place-items: center; overflow: hidden; background: #000; }
-.magicViewport video { width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain !important; object-position: center; transform: none !important; filter: none !important; }
-
-.lightbox, .boothOverlay {
+/* Lightbox Modal */
+.lightbox {
   position: fixed;
   z-index: 99999;
   inset: 0;
@@ -530,6 +1135,13 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
   border-radius: 20px;
   border: 1.5px solid rgba(255, 102, 178, 0.4);
   box-shadow: 0 0 50px rgba(255, 46, 147, 0.35);
+}
+.lightboxImageWrap img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .lightboxContent p {
   color: #ff66b2;
@@ -580,58 +1192,7 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
 .lightboxPrev { left: 5vw; }
 .lightboxNext { right: 5vw; }
 
-.boothOverlay {
-  display: block;
-  overflow: auto;
-  padding: 28px 6vw;
-  background: radial-gradient(circle at 50% 50%, #3e1259, #08060e 75%);
-}
-.boothTopline { display: flex; justify-content: space-between; color: var(--neon-cyan); }
-.boothTopline button { border: 0; color: #ff66b2; background: transparent; cursor: pointer; font: 11px 'DM Mono', monospace; font-weight: 600; }
-.boothContent { max-width: 620px; margin: 8vh auto; text-align: center; }
-.boothFrame {
-  position: relative;
-  height: min(58vh, 550px);
-  padding: 12px;
-  border: 2px solid var(--neon-cyan);
-  border-radius: 20px;
-  background: #140d22;
-  box-shadow: 0 0 55px rgba(0, 245, 255, 0.35), inset 0 0 25px rgba(255, 46, 147, 0.2);
-}
-.boothFrame img { position: relative; z-index: 1; }
-.boothScanline {
-  position: absolute;
-  z-index: 2;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 3px;
-  background: var(--neon-cyan);
-  box-shadow: 0 0 15px var(--neon-cyan);
-  opacity: .75;
-  animation: scan 2.5s ease-in-out infinite;
-}
-.boothCaption { color: #ff66b2; font-weight: 600; }
-.boothControls { display: flex; justify-content: center; align-items: center; gap: 30px; color: var(--neon-cyan); font: 12px 'DM Mono', monospace; }
-.randomButton {
-  margin-top: 22px;
-  border: 1px solid #d946ef;
-  border-radius: 99px;
-  padding: 11px 18px;
-  color: #f0abfc;
-  background: rgba(217, 70, 239, 0.15);
-  box-shadow: 0 0 20px rgba(217, 70, 239, 0.3);
-  cursor: pointer;
-  font: 11px 'DM Mono', monospace;
-  font-weight: 600;
-}
-.randomButton:hover {
-  background: #d946ef;
-  color: #0c0914;
-  box-shadow: 0 0 30px #d946ef;
-}
-.boothFlash { position: fixed; z-index: 40; inset: 0; background: #fff; animation: flash .18s ease-out both; }
-
+/* Gift Burst Confetti */
 .giftBurst { position: fixed; z-index: 25; inset: 0; overflow: hidden; pointer-events: none; perspective: 700px; }
 .giftObject {
   position: absolute;
@@ -642,7 +1203,7 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
   display: grid;
   place-items: center;
   background: transparent;
-  animation: fly var(--gift-duration, var(--burst-duration, 30000ms)) cubic-bezier(.12,.7,.25,1) var(--gift-delay, 0s) both;
+  animation: fly var(--gift-duration, var(--burst-duration, 12000ms)) cubic-bezier(.12,.7,.25,1) var(--gift-delay, 0s) both;
   will-change: transform, opacity;
 }
 .giftObject img {
@@ -653,353 +1214,7 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
   filter: drop-shadow(0 10px 16px rgba(0,0,0,.6));
 }
 
-@keyframes rise { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes reveal { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: scale(1); } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes flash { from { opacity: .9; } to { opacity: 0; } }
-@keyframes scan { 50% { transform: translateY(120px); } }
-@keyframes fly {
-  0% { opacity: 0; transform: translate3d(0,0,-500px) scale(.1) rotate(0); }
-  18% { opacity: 1; }
-  100% { opacity: 0; transform: translate3d(var(--x), var(--y), 400px) scale(3.8) rotate(var(--r)); }
-}
-
-.photoStripScreen { width: min(920px, 100%); margin: auto; text-align: center; }
-.photoStripPreview { width: min(100%, 720px); margin: auto; padding: 10px; border: 1px solid rgba(255,177,216,.55); background: rgba(255,255,255,.06); box-shadow: 0 16px 60px rgba(0,0,0,.35); }
-.photoStripPreview canvas { display: block; width: 100%; height: auto; }
-.stripFields { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 20px auto; }
-.stripFields label { display: grid; gap: 7px; color: #8bf5ff; font: 10px 'DM Mono', monospace; text-align: left; text-transform: uppercase; }
-.stripFields input { width: 180px; border: 1px solid rgba(255,255,255,.25); border-radius: 8px; padding: 11px; color: #fff9fb; background: rgba(255,255,255,.08); }
-.stripChoices { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 18px auto; }.stripSelect { display: grid; gap: 7px; color: #8bf5ff; font: 10px 'DM Mono', monospace; text-align: left; text-transform: uppercase; }.stripSelect select { border: 1px solid rgba(255,255,255,.25); border-radius: 8px; padding: 10px; color: #fff9fb; background: #241833; }
-.photoStripScreen .capturedActions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
-.photoStripScreen .capturedActions button { min-height: 44px; border: 1px solid #ffb1d8; border-radius: 99px; padding: 10px 16px; color: #ffb1d8; background: transparent; cursor: pointer; font-size: 10px; letter-spacing: .08em; }
-.photoStripPreview {
-  width: min(100%, 720px);
-  margin: auto;
-  padding: 12px;
-  border: 1.5px solid rgba(255, 77, 166, 0.7);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5), 0 0 45px rgba(255, 46, 147, 0.35);
-}
-.photoStripPreview canvas { display: block; width: 100%; height: auto; border-radius: 10px; }
-.stripFields { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin: 22px auto; }
-.stripFields label { display: grid; gap: 7px; color: var(--neon-cyan); font: 11px 'DM Mono', monospace; font-weight: 600; text-align: left; text-transform: uppercase; text-shadow: 0 0 10px var(--neon-cyan); }
-.stripFields input {
-  width: 180px;
-  border: 1.5px solid rgba(255, 102, 178, 0.4);
-  border-radius: 10px;
-  padding: 12px;
-  color: #fff9fb;
-  background: rgba(255, 255, 255, 0.1);
-  font: 13px 'Manrope', sans-serif;
-  transition: border-color .2s ease, box-shadow .2s ease;
-}
-.stripFields input:focus {
-  outline: none;
-  border-color: var(--neon-cyan);
-  box-shadow: 0 0 16px rgba(0, 245, 255, 0.5);
-}
-
-.stripChoices { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin: 18px auto; }
-.stripSelect { display: grid; gap: 7px; color: var(--neon-cyan); font: 11px 'DM Mono', monospace; font-weight: 600; text-align: left; text-transform: uppercase; text-shadow: 0 0 10px var(--neon-cyan); }
-.stripSelect select {
-  border: 1.5px solid rgba(255, 102, 178, 0.4);
-  border-radius: 10px;
-  padding: 11px;
-  color: #fff9fb;
-  background: #201130;
-  font: 13px 'Manrope', sans-serif;
-  cursor: pointer;
-}
-.stripSelect select:focus {
-  outline: none;
-  border-color: var(--neon-cyan);
-  box-shadow: 0 0 16px rgba(0, 245, 255, 0.5);
-}
-
-.photoStripScreen .capturedActions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
-.photoStripScreen .capturedActions button {
-  min-height: 46px;
-  border: 1.5px solid #ff4da6;
-  border-radius: 99px;
-  padding: 11px 20px;
-  color: #ff99d6;
-  background: rgba(255, 20, 147, 0.12);
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .09em;
-  transition: all .25s ease;
-}
-.photoStripScreen .capturedActions button:hover:not(:disabled) {
-  border-color: var(--neon-cyan);
-  color: var(--neon-cyan);
-  background: rgba(0, 245, 255, 0.18);
-  box-shadow: 0 0 25px rgba(0, 245, 255, 0.6);
-  transform: translateY(-2px);
-}
-.photoStripScreen .capturedActions button.primary {
-  color: #ffffff;
-  background: linear-gradient(135deg, #ff1493 0%, #d946ef 60%, #8b5cf6 100%);
-  border-color: #ff4db8;
-  box-shadow: 0 4px 22px rgba(255, 20, 147, 0.5);
-}
-.photoStripScreen .capturedActions button.primary:hover {
-  background: linear-gradient(135deg, #ff2e93 0%, #ec4899 40%, #00f5ff 100%);
-  box-shadow: 0 8px 36px rgba(255, 46, 147, 0.75), 0 0 25px rgba(0, 245, 255, 0.6);
-}
-
-.photoStripScreen .capturedActions button:disabled { opacity: .5; cursor: wait; }
-.stripCountdown { position: absolute; right: 16px; bottom: 16px; z-index: 4; padding: 8px 11px; border-radius: 99px; color: #100d18; background: #8bf5ff; font: 11px 'DM Mono', monospace; }
-.cameraExperience { z-index: 100; isolation: isolate; background-color: #100d18; }
-.magicViewport { isolation: isolate; background: #05050a; }
-.magicViewport video { position: relative; z-index: 1; background: #05050a; }
-.magicViewport video { min-width: 100%; min-height: 100%; object-position: center; }
-
-.openGiftCam { margin-top: 20px; padding: 15px 22px; }
-.cameraExperience { position: fixed; z-index: 99999; isolation: isolate; inset: 0; display: flex; flex-direction: column; overflow: auto; padding: max(24px, env(safe-area-inset-top)) 6vw max(24px, env(safe-area-inset-bottom)); background: #100d18; opacity: 1; animation: fadeIn .3s ease both; }
-.cameraHeader { display: flex; justify-content: space-between; align-items: flex-start; max-width: 980px; width: 100%; margin: 0 auto; }.cameraHeader h3 { margin: 8px 0 3px; color: #fff9fb; font-size: clamp(1.5rem, 4vw, 2.7rem); letter-spacing: -.06em; }.cameraHeader p { margin: 0; color: #c9c0d5; font-size: 13px; }.cameraHeader > button { border: 0; color: #fff9fb; background: transparent; cursor: pointer; font-size: 34px; }.cameraEyebrow { color: #8bf5ff; font: 10px 'DM Mono', monospace; letter-spacing: .12em; }
-.cameraStage { width: min(680px, 100%); margin: 3vh auto 0; text-align: center; }.magicViewport { position: relative; width: 100%; height: min(67dvh, 680px); overflow: hidden; border: 0; border-radius: 0; background: #05050a; box-shadow: none; }.magicViewport video { display: block; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }.cameraOverlay { position: absolute; z-index: 2; inset: 0; pointer-events: none; }.cameraBrand, .cameraCoordinates, .cameraStatus, .presenceText { position: absolute; color: #8bf5ff; font: 9px 'DM Mono', monospace; letter-spacing: .1em; text-transform: uppercase; }.cameraBrand { top: 23px; left: 24px; }.cameraCoordinates { top: 23px; right: 24px; text-align: right; line-height: 1.5; }.cameraStatus { bottom: 24px; left: 24px; }.presenceText { right: 24px; bottom: 24px; color: #ffb1d8; }.corner { position: absolute; width: 28px; height: 28px; border-color: #ffb1d8; border-style: solid; opacity: .9; }.cornerTopLeft { top: 22px; left: 22px; border-width: 2px 0 0 2px; }.cornerTopRight { top: 22px; right: 22px; border-width: 2px 2px 0 0; }.cornerBottomLeft { bottom: 22px; left: 22px; border-width: 0 0 2px 2px; }.cornerBottomRight { right: 22px; bottom: 22px; border-width: 0 2px 2px 0; }.trackingDot { position: absolute; width: 6px; height: 6px; border: 1px solid #8bf5ff; border-radius: 50%; box-shadow: 0 0 12px #8bf5ff; animation: pulse 1.8s ease-in-out infinite; }.dotOne { top: 42%; left: 32%; }.dotTwo { top: 40%; right: 29%; animation-delay: .4s; }.dotThree { bottom: 30%; left: 51%; animation-delay: .8s; }.sparkle { position: absolute; color: #ffb1d8; font-size: 18px; animation: pulse 1.6s ease-in-out infinite; }.sparkleOne { top: 16%; right: 16%; }.sparkleTwo { bottom: 19%; left: 14%; animation-delay: .5s; }.sparkleThree { top: 52%; right: 11%; animation-delay: 1s; }
-.cameraActions { display: flex; align-items: center; justify-content: space-between; width: min(390px, 100%); margin: 22px auto 0; }.cameraActionsPlain { justify-content: center; }.magicButton, .roundControl { min-height: 48px; border: 1px solid rgba(255,255,255,.3); border-radius: 99px; padding: 0 16px; color: #fff9fb; background: rgba(255,255,255,.09); cursor: pointer; }.magicButton.active { color: #100d18; background: #ffb1d8; box-shadow: 0 0 26px rgba(255,139,201,.5); }.roundControl { width: 48px; padding: 0; border-radius: 50%; font-size: 21px; }.captureButton { width: 78px; height: 78px; display: grid; place-items: center; border: 4px solid #fff9fb; border-radius: 50%; background: transparent; cursor: pointer; box-shadow: 0 0 0 7px rgba(255,255,255,.12), 0 0 32px rgba(255,139,201,.35); }.captureButton span { width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, #ff8bc9, #d76cff); transition: transform .2s ease; }.captureButton:hover span { transform: scale(.86); }.cameraHint { color: #c9c0d5; font: 11px 'DM Mono', monospace; letter-spacing: .08em; }.cameraLoading, .cameraFallback { display: grid; place-items: center; gap: 18px; min-height: 60dvh; color: #ffb1d8; font-family: 'DM Mono', monospace; text-align: center; }.cameraFallback strong { font-size: clamp(1.4rem, 5vw, 2.5rem); }.cameraFallback span { color: #c9c0d5; }.loaderRing { width: 45px; height: 45px; border: 2px solid rgba(139,245,255,.2); border-top-color: #8bf5ff; border-radius: 50%; animation: spin 1s linear infinite; }
-.magicViewport { isolation: isolate; background: #05040a; }
-.magicViewport video { position: relative; z-index: 1; background: #05040a; }
-.magicViewport { touch-action: none; }
-.cameraControl { min-width: 44px; min-height: 44px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; color: #fff9fb; background: rgba(255,255,255,.09); cursor: pointer; font-size: 24px; line-height: 1; }
-.cameraControl:disabled { opacity: .35; cursor: not-allowed; }
-.zoomIndicator { min-width: 48px; color: #8bf5ff; font: 11px 'DM Mono', monospace; text-align: center; }
-.boothCountdown { position: absolute; z-index: 4; inset: 0; display: grid; place-content: center; gap: 10px; color: #fff; background: rgba(10, 7, 18, .18); pointer-events: none; text-align: center; text-shadow: 0 0 25px #ff8bc9; }
-.boothCountdown span { color: #8bf5ff; font: 11px 'DM Mono', monospace; letter-spacing: .18em; }
-.boothCountdown strong { color: #ffb1d8; font-size: clamp(5rem, 25vw, 11rem); line-height: .85; animation: countdownPop .8s ease both; }
-@keyframes countdownPop { from { opacity: 0; transform: scale(1.35); } to { opacity: 1; transform: scale(1); } }
-
-/* Shared glass language for cards, controls, and mobile surfaces. */
-:root { --glass: rgba(255,255,255,.075); --glass-strong: rgba(255,255,255,.12); --glass-line: rgba(255,255,255,.2); --glass-blur: 18px; }
-.section { isolation: isolate; }
-.section::before { content: ''; position: absolute; z-index: -1; inset: 28px 4vw; border: 1px solid rgba(255,255,255,.045); border-radius: 32px; background: rgba(255,255,255,.012); box-shadow: inset 0 1px rgba(255,255,255,.04); pointer-events: none; }
-.photoCard, .giftCard, .cameraFrame, .musicPlayer, .photoStripPreview, .capturedPhotoCard { border: 1px solid var(--glass-line); background: var(--glass); backdrop-filter: blur(var(--glass-blur)); }
-.photoCard { color: #fff9fb; }
-.photoCard .photoImageWrap { border-radius: 12px; }
-.photoCaption { color: #c9c0d5; }
-.lightbox, .boothOverlay { backdrop-filter: blur(18px) saturate(115%); }
-.stripFields input, .stripSelect select { min-height: 44px; backdrop-filter: blur(12px); }
-.photoStripScreen .capturedActions button, .cameraActions button, .navLinks > button { min-height: 44px; }
-.photoStripScreen .capturedActions button.primary { color: #100d18; background: #ffb1d8; }
-.openGiftCam { margin-top: 22px; padding: 16px 28px; }
-
-.cameraExperience {
-  position: fixed;
-  z-index: 99999;
-  isolation: isolate;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  padding: max(24px, env(safe-area-inset-top)) 6vw max(24px, env(safe-area-inset-bottom));
-  background: radial-gradient(circle at 50% 20%, #2a0c3b, #08060e 70%);
-  opacity: 1;
-  animation: fadeIn .3s ease both;
-}
-
-.cameraHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  max-width: 980px;
-  width: 100%;
-  margin: 0 auto;
-}
-.cameraHeader h3 {
-  margin: 8px 0 4px;
-  color: #fff9fb;
-  font-size: clamp(1.6rem, 4vw, 2.8rem);
-  letter-spacing: -.06em;
-  font-weight: 800;
-  background: linear-gradient(135deg, #ffffff 0%, #ff80bf 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 20px rgba(255, 46, 147, 0.5));
-}
-.cameraHeader p { margin: 0; color: #ded6ed; font-size: 14px; }
-.cameraHeader > button {
-  border: 0;
-  color: #fff9fb;
-  background: transparent;
-  cursor: pointer;
-  font-size: 38px;
-  transition: transform .2s ease, color .2s ease;
-}
-.cameraHeader > button:hover { color: #ff2e93; transform: scale(1.15); }
-
-.cameraStage { width: min(680px, 100%); margin: 3vh auto 0; text-align: center; }
-
-.magicViewport {
-  position: relative;
-  width: 100%;
-  height: min(67dvh, 680px);
-  overflow: hidden;
-  border-radius: 24px;
-  border: 2px solid rgba(255, 77, 166, 0.6);
-  background: #05040a;
-  box-shadow: 0 0 50px rgba(255, 46, 147, 0.35), 0 0 25px rgba(0, 245, 255, 0.25);
-}
-.magicViewport video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scaleX(-1);
-}
-
-.cameraOverlay { position: absolute; z-index: 2; inset: 0; pointer-events: none; }
-.cameraBrand, .cameraCoordinates, .cameraStatus, .presenceText {
-  position: absolute;
-  color: var(--neon-cyan);
-  font: 10px 'DM Mono', monospace;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  font-weight: 600;
-  text-shadow: 0 0 12px var(--neon-cyan);
-}
-.cameraBrand { top: 23px; left: 24px; }
-.cameraCoordinates { top: 23px; right: 24px; text-align: right; line-height: 1.5; }
-.cameraStatus { bottom: 24px; left: 24px; }
-.presenceText { right: 24px; bottom: 24px; color: #ff66b2; text-shadow: 0 0 12px #ff66b2; }
-
-.corner {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-color: #ff3399;
-  border-style: solid;
-  opacity: .95;
-  filter: drop-shadow(0 0 8px #ff3399);
-}
-.cornerTopLeft { top: 22px; left: 22px; border-width: 3px 0 0 3px; border-top-left-radius: 8px; }
-.cornerTopRight { top: 22px; right: 22px; border-width: 3px 3px 0 0; border-top-right-radius: 8px; }
-.cornerBottomLeft { bottom: 22px; left: 22px; border-width: 0 0 3px 3px; border-bottom-left-radius: 8px; }
-.cornerBottomRight { right: 22px; bottom: 22px; border-width: 0 3px 3px 0; border-bottom-right-radius: 8px; }
-
-.trackingDot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border: 1px solid var(--neon-cyan);
-  background: var(--neon-cyan);
-  border-radius: 50%;
-  box-shadow: 0 0 16px var(--neon-cyan), 0 0 30px var(--neon-cyan);
-  animation: pulse 1.8s ease-in-out infinite;
-}
-.dotOne { top: 42%; left: 32%; }
-.dotTwo { top: 40%; right: 29%; animation-delay: .4s; }
-.dotThree { bottom: 30%; left: 51%; animation-delay: .8s; }
-
-.sparkle {
-  position: absolute;
-  color: #ff4da6;
-  font-size: 22px;
-  text-shadow: 0 0 16px #ff4da6;
-  animation: pulse 1.6s ease-in-out infinite;
-}
-.sparkleOne { top: 16%; right: 16%; }
-.sparkleTwo { bottom: 19%; left: 14%; animation-delay: .5s; }
-.sparkleThree { top: 52%; right: 11%; animation-delay: 1s; }
-
-.cameraActions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: min(390px, 100%);
-  margin: 22px auto 0;
-}
-.cameraActionsPlain { justify-content: center; }
-
-.roundControl {
-  width: 52px;
-  height: 52px;
-  padding: 0;
-  border-radius: 50%;
-  font-size: 22px;
-  border: 1.5px solid rgba(0, 245, 255, 0.45);
-  color: #ffffff;
-  background: rgba(0, 245, 255, 0.12);
-  cursor: pointer;
-  transition: all .25s ease;
-}
-.roundControl:hover {
-  border-color: var(--neon-cyan);
-  color: var(--neon-cyan);
-  box-shadow: 0 0 25px var(--neon-cyan);
-  transform: scale(1.1);
-}
-
-.photoStripButton {
-  width: min(100%, 340px);
-  min-height: 50px;
-  margin-top: 14px;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .12em;
-}
-
-.captureButton {
-  width: 82px;
-  height: 82px;
-  display: grid;
-  place-items: center;
-  border: 4px solid #ffffff;
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  box-shadow: 0 0 0 7px rgba(255,255,255,.2), 0 0 45px rgba(255,46,147,.75), 0 0 25px rgba(0, 245, 255, 0.5);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.captureButton:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 0 9px rgba(255,255,255,.3), 0 0 60px rgba(255,46,147,.9), 0 0 35px rgba(0, 245, 255, 0.7);
-}
-.captureButton span {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ff1493, #f43f5e, #a855f7);
-  transition: transform .2s ease;
-}
-.captureButton:hover span { transform: scale(.88); }
-
-.cameraHint {
-  color: #ded6ed;
-  font: 12px 'DM Mono', monospace;
-  letter-spacing: .09em;
-  margin-top: 12px;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-}
-
-.cameraLoading, .cameraFallback {
-  display: grid;
-  place-items: center;
-  gap: 18px;
-  min-height: 60dvh;
-  color: #ff66b2;
-  font-family: 'DM Mono', monospace;
-  text-align: center;
-}
-.cameraFallback strong {
-  font-size: clamp(1.5rem, 5vw, 2.6rem);
-  color: #ffffff;
-  text-shadow: 0 0 25px rgba(255, 46, 147, 0.7);
-}
-.cameraFallback span { color: #ded6ed; }
-.loaderRing {
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgba(0, 245, 255, 0.25);
-  border-top-color: var(--neon-cyan);
-  border-radius: 50%;
-  box-shadow: 0 0 20px var(--neon-cyan);
-  animation: spin 1s linear infinite;
-}
-
+/* Locked Photo / Scan */
 .lockedPhoto {
   position: relative;
   overflow: hidden;
@@ -1021,7 +1236,6 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
   box-shadow: 0 0 25px var(--neon-cyan);
   animation: cameraScan 1.2s linear infinite;
 }
-
 .flowMessage {
   min-height: 45px;
   margin-top: 24px;
@@ -1033,12 +1247,43 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
   text-shadow: 0 0 20px rgba(255, 77, 166, 0.8);
 }
 
+/* Keyframes */
+@keyframes rise { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes reveal { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: scale(1); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes flash { from { opacity: .95; } to { opacity: 0; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 50% { opacity: .35; transform: scale(.7); } }
 @keyframes cameraScan {
   0%, 100% { transform: translateY(0); opacity: .4; }
   50% { transform: translateY(58dvh); opacity: 1; }
 }
-@keyframes pulse { 50% { opacity: .35; transform: scale(.7); } }
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translate(-50%, -15px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.animate-pop-in { animation: popIn .4s cubic-bezier(.2,.8,.2,1) both; }
+.animate-slide-down { animation: slideDown .3s ease both; }
+.animate-fade-in { animation: fadeIn .3s ease both; }
+
+/* Responsive Mobile & Tablet */
+@media (max-width: 900px) {
+  .photoboothMainGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .photoboothPreviewCol {
+    order: 1;
+  }
+  .photoboothControlsCol {
+    order: 2;
+  }
+}
 
 @media (max-width: 760px) {
   .navbar { padding: 18px 5vw; }
@@ -1048,8 +1293,6 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
   .hero { padding-inline: 5vw; }
   .section { padding: 80px 5vw; }
   .photoGrid { grid-template-columns: repeat(2, 1fr); gap: 18px 12px; }
-  .photoCard-4, .photoCard-5 { display: block; }
-  .cameraViewport, .cameraViewport video, .cameraPlaceholder { min-height: 250px; }
   .lightbox { padding: 18px; }
   .lightboxArrow { font-size: 27px; }
   .lightboxPrev { left: 10px; }
@@ -1057,55 +1300,10 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
 }
 
 @media (max-width: 600px) {
-	html, body, #root { width: 100%; max-width: 100%; overflow-x: hidden; }
-	.site { min-height: 100dvh; }
-	.navbar { position: sticky; z-index: 50; padding: max(14px, env(safe-area-inset-top)) 16px 14px; }
-	.logo { font-size: 11px; }
-	.navButton { white-space: nowrap; }
-	.hero { min-height: calc(100dvh - 58px); padding: 12vh 20px 16vh; }
-	.hero h1 { max-width: 340px; margin-inline: auto; font-size: clamp(3.4rem, 17vw, 5.5rem); }
-	.subtitle, .section > p { max-width: 300px; margin-inline: auto; font-size: 14px; }
-	.section { width: 100%; padding: 76px 16px; }
-	.section::before { inset: 20px 8px; border-radius: 24px; background: transparent; border-color: transparent; box-shadow: none; }
-	.section h2 { font-size: clamp(2rem, 12vw, 3.2rem); }
-	.photoGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; margin-top: 30px; }
-	.photoCard { padding: 7px 7px 9px; border-radius: 14px; }
-	.photoImageWrap { min-height: 120px; }
-	.photoCard-0, .photoCard-1, .photoCard-2, .photoCard-3, .photoCard-4, .photoCard-5 { transform: none; }
-	.photoCard:hover { transform: translateY(-3px) scale(1.015); }
-	.photoNumber { top: -6px; right: -4px; }
-	.cameraExperience { min-height: 100dvh; padding: max(16px, env(safe-area-inset-top)) 12px max(20px, env(safe-area-inset-bottom)); }
-	.cameraHeader { flex: 0 0 auto; }
-	.cameraHeader h3 { font-size: 1.45rem; }
-	.cameraStage { margin-top: 18px; }
-	.magicViewport { height: min(66dvh, 620px); min-height: 0; }
-	.cameraActions { width: min(100%, 360px); }
-	.magicButton, .roundControl { min-height: 52px; }
-	.captureButton { width: 76px; height: 76px; }
-	.captureButton span { width: 56px; height: 56px; }
-	.photoStripButton { width: min(100%, 320px); min-height: 48px; }
-	.photoStripScreen { padding-bottom: 18px; }
-	.photoStripPreview { max-width: 260px; padding: 7px; border-radius: 16px; }
-	.photoStripScreen h3 { font-size: 1.1rem; }
-	.stripFields, .stripChoices { display: grid; grid-template-columns: 1fr 1fr; width: min(100%, 360px); }
-	.stripFields label:last-child, .stripChoices label:last-child { grid-column: 1 / -1; }
-	.stripFields input, .stripSelect select { width: 100%; min-width: 0; font-size: 12px; }
-	.photoStripScreen .capturedActions { width: min(100%, 360px); flex-direction: column; }
-	.photoStripScreen .capturedActions button { width: 100%; }
-	.lightbox { padding: max(20px, env(safe-area-inset-top)) 14px max(20px, env(safe-area-inset-bottom)); }
-	.lightboxImageWrap { height: min(68dvh, 560px); border-radius: 18px; }
-	.lightboxContent { width: min(100%, 360px); }
-	.lightboxArrow { top: auto; bottom: 9%; z-index: 2; min-width: 48px; min-height: 48px; border: 1px solid var(--glass-line); border-radius: 50%; background: var(--glass); }
-	.lightboxPrev { left: 22%; }.lightboxNext { right: 22%; }
-	.boothOverlay { padding: max(16px, env(safe-area-inset-top)) 14px max(20px, env(safe-area-inset-bottom)); }
-	.boothContent { margin: 8vh auto 4vh; }
-	.boothFrame { height: min(58dvh, 520px); border-radius: 18px; }
-	.final { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
   html, body, #root { width: 100%; max-width: 100%; overflow-x: hidden; }
   .site { min-height: 100dvh; }
   .navbar { position: sticky; z-index: 50; padding: max(14px, env(safe-area-inset-top)) 16px 14px; }
   .logo { font-size: 12px; }
-  .navButton { white-space: nowrap; }
   .hero { min-height: calc(100dvh - 58px); padding: 12vh 20px 16vh; }
   .hero h1 { max-width: 340px; margin-inline: auto; font-size: clamp(3.4rem, 17vw, 5.5rem); }
   .subtitle, .section > p { max-width: 320px; margin-inline: auto; font-size: 15px; }
@@ -1116,48 +1314,22 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
   .photoCard { padding: 8px 8px 10px; border-radius: 14px; }
   .photoImageWrap { min-height: 120px; }
   .photoCard-0, .photoCard-1, .photoCard-2, .photoCard-3, .photoCard-4, .photoCard-5 { transform: none; }
-  .photoCard:hover { transform: translateY(-4px) scale(1.02); }
-  .photoNumber { top: -6px; right: -4px; }
-  .cameraExperience { min-height: 100dvh; padding: max(16px, env(safe-area-inset-top)) 14px max(20px, env(safe-area-inset-bottom)); }
-  .cameraHeader { flex: 0 0 auto; }
-  .cameraHeader h3 { font-size: 1.55rem; }
-  .cameraStage { margin-top: 18px; }
-  .magicViewport { height: min(66dvh, 620px); min-height: 0; border-radius: 20px; }
-  .cameraActions { width: min(100%, 360px); }
-  .roundControl { min-height: 52px; width: 52px; }
-  .captureButton { width: 78px; height: 78px; }
-  .captureButton span { width: 58px; height: 58px; }
-  .photoStripButton { width: min(100%, 320px); min-height: 48px; }
-  .photoStripScreen { padding-bottom: 18px; }
-  .photoStripPreview { max-width: 280px; padding: 8px; border-radius: 16px; }
-  .photoStripScreen h3 { font-size: 1.2rem; }
-  .stripFields, .stripChoices { display: grid; grid-template-columns: 1fr 1fr; width: min(100%, 360px); }
-  .stripFields label:last-child, .stripChoices label:last-child { grid-column: 1 / -1; }
-  .stripFields input, .stripSelect select { width: 100%; min-width: 0; font-size: 13px; }
-  .photoStripScreen .capturedActions { width: min(100%, 360px); flex-direction: column; }
-  .photoStripScreen .capturedActions button { width: 100%; }
-  .lightbox { padding: max(20px, env(safe-area-inset-top)) 14px max(20px, env(safe-area-inset-bottom)); }
-  .lightboxImageWrap { height: min(68dvh, 560px); border-radius: 18px; }
-  .lightboxContent { width: min(100%, 360px); }
-  .lightboxArrow { top: auto; bottom: 9%; z-index: 2; min-width: 48px; min-height: 48px; }
-  .lightboxPrev { left: 22%; }
-  .lightboxNext { right: 22%; }
-  .boothOverlay { padding: max(16px, env(safe-area-inset-top)) 14px max(20px, env(safe-area-inset-bottom)); }
-  .boothContent { margin: 8vh auto 4vh; }
-  .boothFrame { height: min(58dvh, 520px); border-radius: 18px; }
-  .final { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
-}
-
-/* Keep the live phone feed natural: no crop, zoom, mirror, or filter. */
-.cameraExperience .magicViewport video {
-  width: 100% !important;
-  height: 100% !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
-  object-fit: contain !important;
-  object-position: center !important;
-  transform: none !important;
-  filter: none !important;
+  
+  /* Mobile Photobooth experience */
+  .cameraExperience {
+    min-height: 100dvh;
+    padding: max(16px, env(safe-area-inset-top)) 14px max(24px, env(safe-area-inset-bottom));
+  }
+  .cameraHeader h3 { font-size: 1.45rem; }
+  .cameraViewport { height: min(64dvh, 520px); border-radius: 22px; }
+  .boothHudTop { top: 12px; left: 14px; right: 14px; }
+  .shotCounter { padding: 4px 10px; font-size: 10px; }
+  .boothPromptBanner { top: 52px; padding: 6px 14px; font-size: 11px; }
+  .photoboothEditor { padding: 16px; border-radius: 18px; }
+  .layoutChoiceGrid, .themeChoiceGrid { grid-template-columns: repeat(2, 1fr); }
+  .layoutChoiceGrid .layoutChoiceBtn:last-child { grid-column: 1 / -1; }
+  .themeChoiceGrid .themeChoiceBtn:last-child { grid-column: 1 / -1; }
+  .secondaryActionRow { flex-direction: column; }
 }
 
 @media (prefers-reduced-motion: reduce) {
