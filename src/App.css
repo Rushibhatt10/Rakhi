@@ -372,6 +372,14 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
   object-fit: contain;
   background: #000;
 }
+.cameraActionsWithZoom { justify-content: center; gap: 8px; flex-wrap: wrap; }
+.cameraZoomBtn { min-width: 58px; min-height: 44px; border: 1px solid rgba(255,255,255,.3); border-radius: 99px; color: #fff9fb; background: rgba(255,255,255,.09); cursor: pointer; font: 12px 'DM Mono', monospace; }
+.cameraZoomBtn.active, .cameraZoomBtn:hover:not(:disabled) { border-color: #8bf5ff; color: #100d18; background: #8bf5ff; }
+.cameraZoomBtn:disabled { cursor: not-allowed; opacity: .4; }
+.boothPrepOverlay { position: absolute; z-index: 4; inset: 0; display: grid; place-content: center; gap: 10px; padding: 20px; color: #fff; background: rgba(10,7,18,.2); text-align: center; text-shadow: 0 0 24px #ff8bc9; pointer-events: none; }
+.boothPrepOverlay span { color: #8bf5ff; font: 12px 'DM Mono', monospace; letter-spacing: .16em; }
+.boothPrepOverlay strong { color: #ffb1d8; font-size: clamp(5rem, 24vw, 10rem); line-height: .8; }
+.boothPrepOverlay small { color: #fff9fb; font-size: 12px; }
 .cameraViewport video.mirrored {
   transform: scaleX(-1);
 }

@@ -17,6 +17,8 @@ function GiftCamera({ onOpenChange, onReveal }) {
   const [promptText, setPromptText] = useState('');
   const [countdown, setCountdown] = useState(null);
   const [flash, setFlash] = useState(false);
+  const [zoom, setZoom] = useState(1);
+  const [zoomRange, setZoomRange] = useState(null);
 
   const clearTimers = () => {
     timersRef.current.forEach((timer) => window.clearTimeout(timer));
@@ -75,6 +77,10 @@ function GiftCamera({ onOpenChange, onReveal }) {
       });
       streamRef.current = stream;
       setFacingMode(requestedFacingMode);
+      const cameraTrack = stream.getVideoTracks()[0];
+      const capabilities = cameraTrack?.getCapabilities?.();
+      setZoomRange(capabilities?.zoom ? { min: capabilities.zoom.min, max: capabilities.zoom.max, step: capabilities.zoom.step || 0.1 } : null);
+      setZoom(capabilities?.zoom?.min || 1);
       setCameraState('ready');
     } catch (error) {
       console.warn('Camera permission or device error:', error);
@@ -91,12 +97,23 @@ function GiftCamera({ onOpenChange, onReveal }) {
     setPromptText('');
     setCountdown(null);
     setFlash(false);
+    setZoomRange(null);
+    setZoom(1);
     setCameraState('idle');
   };
 
   const flipCamera = async () => {
     const nextMode = facingMode === 'user' ? 'environment' : 'user';
     await openCamera(nextMode);
+  };
+
+  const setCameraZoom = async (value) => {
+    if (!zoomRange) return;
+    const nextZoom = Math.min(zoomRange.max, Math.max(zoomRange.min, value));
+    try {
+      await streamRef.current?.getVideoTracks()[0]?.applyConstraints({ advanced: [{ zoom: nextZoom }] });
+      setZoom(nextZoom);
+    } catch (error) { console.warn('Camera zoom is not supported:', error); }
   };
 
   // Capture full natural frame — no crop, no zoom
@@ -124,7 +141,7 @@ function GiftCamera({ onOpenChange, onReveal }) {
   };
 
   // Start 5-second automatic 3-shot Photobooth session
-  const startPhotoBoothSession = () => {
+  const runPhotoBoothSession = () => {
     clearTimers();
     setPhotoShots([]);
     setShotNumber(0);
@@ -216,6 +233,20 @@ function GiftCamera({ onOpenChange, onReveal }) {
         setCameraState('result');
       }, 4900)
     );
+  };
+
+  const startPhotoBoothSession = () => {
+    clearTimers();
+    setCameraState('boothPrep');
+    setPromptText('GET READY...');
+    setCountdown(5);
+    [4, 3, 2, 1].forEach((number, index) => {
+      timersRef.current.push(window.setTimeout(() => setCountdown(number), (index + 1) * 1000));
+    });
+    timersRef.current.push(window.setTimeout(() => {
+      setCountdown(null);
+      runPhotoBoothSession();
+    }, 5000));
   };
 
   // Retake restarts the camera and allows another session
@@ -331,7 +362,7 @@ function GiftCamera({ onOpenChange, onReveal }) {
             )}
 
             {/* Live Camera Viewfinder & 3-Shot Runner */}
-            {(cameraState === 'ready' || cameraState === 'session') && (
+            {(cameraState === 'ready' || cameraState === 'session' || cameraState === 'boothPrep') && (
               <div className="cameraStage">
                 <div className="cameraViewport magicViewport">
                   <video
@@ -356,7 +387,9 @@ function GiftCamera({ onOpenChange, onReveal }) {
                 </div>
 
                 {/* Viewfinder Controls — flip only, no zoom */}
-                <div className="cameraActions">
+                <div className="cameraActions cameraActionsWithZoom">
+                  <button className="cameraZoomBtn" type="button" onClick={() => setCameraZoom(0.5)} disabled={!zoomRange || cameraState !== 'ready'} aria-label="Use 0.5 times camera zoom">0.5x</button>
+                  <button className={`cameraZoomBtn ${zoom >= 0.95 ? 'active' : ''}`} type="button" onClick={() => setCameraZoom(1)} disabled={!zoomRange || cameraState !== 'ready'} aria-label="Use 1 times camera zoom">1x</button>
                   <button
                     className="roundControl flipBtn"
                     type="button"
@@ -369,6 +402,7 @@ function GiftCamera({ onOpenChange, onReveal }) {
                 </div>
 
                 {/* Main Launch Button */}
+                {cameraState === 'boothPrep' && <div className="boothPrepOverlay" aria-live="polite"><span>GET READY...</span><strong>{countdown}</strong><small>Your 5-second photobooth starts next</small></div>}
                 {cameraState === 'ready' && (
                   <button
                     className="primary startBoothBtn"
