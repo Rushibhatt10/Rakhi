@@ -49,6 +49,7 @@ function GiftCamera({ onOpenChange, onReveal }) {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: requestedFacingMode }, width: { ideal: 1080 }, height: { ideal: 1920 } }, audio: false });
       streamRef.current = stream;
+      setFacingMode(requestedFacingMode);
       const track = stream.getVideoTracks()[0];
       const capabilities = track?.getCapabilities?.();
       setZoomRange(capabilities?.zoom ? { min: capabilities.zoom.min, max: capabilities.zoom.max, step: capabilities.zoom.step || 0.1 } : null);
@@ -62,18 +63,7 @@ function GiftCamera({ onOpenChange, onReveal }) {
 
   const flipCamera = async () => {
     const nextMode = facingMode === 'user' ? 'environment' : 'user';
-
-
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: nextMode }, width: { ideal: 1080 }, height: { ideal: 1920 } }, audio: false });
-      const previousStream = streamRef.current;
-      streamRef.current = stream;
-      previousStream?.getTracks().forEach((track) => track.stop());
-      const capabilities = stream.getVideoTracks()[0]?.getCapabilities?.();
-      setZoomRange(capabilities?.zoom ? { min: capabilities.zoom.min, max: capabilities.zoom.max, step: capabilities.zoom.step || 0.1 } : null);
-      setZoom(capabilities?.zoom?.min || 1);
-      setFacingMode(nextMode); setShotNumber((number) => number + 1);
-    } catch (error) { console.warn('Unable to flip camera:', error); }
+    await openCamera(nextMode);
   };
 
   const changeZoom = async (nextZoom) => {
