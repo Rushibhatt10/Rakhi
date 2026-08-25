@@ -545,23 +545,6 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
   margin: 18px auto 0;
 }
 
-.zoomControls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 102, 178, 0.35);
-  border-radius: 99px;
-  padding: 4px 8px;
-}
-
-.zoomIndicator {
-  color: var(--neon-cyan);
-  font: 11px 'DM Mono', monospace;
-  font-weight: 700;
-  min-width: 34px;
-}
-
 .roundControl {
   width: 44px;
   height: 44px;

@@ -17,9 +17,6 @@ function GiftCamera({ onOpenChange, onReveal }) {
   const [promptText, setPromptText] = useState('');
   const [countdown, setCountdown] = useState(null);
   const [flash, setFlash] = useState(false);
-  const [zoom, setZoom] = useState(1);
-  const [zoomRange, setZoomRange] = useState(null);
-  const pinchStartRef = useRef(null);
 
   const clearTimers = () => {
     timersRef.current.forEach((timer) => window.clearTimeout(timer));
@@ -59,7 +56,7 @@ function GiftCamera({ onOpenChange, onReveal }) {
     };
   }, [cameraState, onOpenChange]);
 
-  // Open camera hardware
+  // Open camera hardware — natural field of view, no zoom
   const openCamera = async (requestedFacingMode = facingMode) => {
     setCameraState('requesting');
     stopStream();
@@ -78,15 +75,6 @@ function GiftCamera({ onOpenChange, onReveal }) {
       });
       streamRef.current = stream;
       setFacingMode(requestedFacingMode);
-
-      const track = stream.getVideoTracks()[0];
-      const capabilities = track?.getCapabilities?.();
-      setZoomRange(
-        capabilities?.zoom
-          ? { min: capabilities.zoom.min, max: capabilities.zoom.max, step: capabilities.zoom.step || 0.1 }
-          : null
-      );
-      setZoom(capabilities?.zoom?.min || 1);
       setCameraState('ready');
     } catch (error) {
       console.warn('Camera permission or device error:', error);
@@ -98,8 +86,6 @@ function GiftCamera({ onOpenChange, onReveal }) {
   const closeCamera = () => {
     clearTimers();
     stopStream();
-    setZoomRange(null);
-    setZoom(1);
     setPhotoShots([]);
     setShotNumber(0);
     setPromptText('');
@@ -113,35 +99,7 @@ function GiftCamera({ onOpenChange, onReveal }) {
     await openCamera(nextMode);
   };
 
-  const changeZoom = async (nextZoom) => {
-    if (!zoomRange) return;
-    const safeZoom = Math.min(zoomRange.max, Math.max(zoomRange.min, nextZoom));
-    const track = streamRef.current?.getVideoTracks?.()[0];
-    try {
-      await track?.applyConstraints({ advanced: [{ zoom: safeZoom }] });
-      setZoom(safeZoom);
-    } catch (error) {
-      console.warn('Camera zoom is not supported:', error);
-    }
-  };
-
-  const handlePinchStart = (event) => {
-    if (event.touches.length === 2) {
-      const [first, second] = event.touches;
-      pinchStartRef.current = Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY);
-    }
-  };
-
-  const handlePinchMove = (event) => {
-    if (!zoomRange || event.touches.length !== 2 || !pinchStartRef.current) return;
-    event.preventDefault();
-    const [first, second] = event.touches;
-    const distance = Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY);
-    changeZoom(zoom + (distance - pinchStartRef.current) / 160);
-    pinchStartRef.current = distance;
-  };
-
-  // High quality frame capture
+  // Capture full natural frame — no crop, no zoom
   const captureFrame = () => {
     const video = videoRef.current;
     if (!video || !video.videoWidth) return null;
@@ -149,8 +107,8 @@ function GiftCamera({ onOpenChange, onReveal }) {
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     const ctx = canvas.getContext('2d');
-    
-    // If front camera, mirror image to match viewfinder
+
+    // Mirror front camera to match the viewfinder
     if (facingMode === 'user') {
       ctx.translate(canvas.width, 0);
       ctx.scale(-1, 1);
@@ -375,11 +333,7 @@ function GiftCamera({ onOpenChange, onReveal }) {
             {/* Live Camera Viewfinder & 3-Shot Runner */}
             {(cameraState === 'ready' || cameraState === 'session') && (
               <div className="cameraStage">
-                <div
-                  className="cameraViewport magicViewport"
-                  onTouchStart={handlePinchStart}
-                  onTouchMove={handlePinchMove}
-                >
+                <div className="cameraViewport magicViewport">
                   <video
                     ref={videoRef}
                     playsInline
@@ -401,32 +355,8 @@ function GiftCamera({ onOpenChange, onReveal }) {
                   />
                 </div>
 
-                {/* Viewfinder Controls */}
+                {/* Viewfinder Controls — flip only, no zoom */}
                 <div className="cameraActions">
-                  <div className="zoomControls">
-                    <button
-                      className="roundControl zoomBtn"
-                      type="button"
-                      onClick={() => changeZoom(zoom - (zoomRange?.step || 0.1))}
-                      disabled={!zoomRange || cameraState === 'session'}
-                      aria-label="Zoom out"
-                    >
-                      −
-                    </button>
-                    <span className="zoomIndicator">
-                      {zoomRange ? `${zoom.toFixed(1)}x` : '1.0x'}
-                    </span>
-                    <button
-                      className="roundControl zoomBtn"
-                      type="button"
-                      onClick={() => changeZoom(zoom + (zoomRange?.step || 0.1))}
-                      disabled={!zoomRange || cameraState === 'session'}
-                      aria-label="Zoom in"
-                    >
-                      +
-                    </button>
-                  </div>
-
                   <button
                     className="roundControl flipBtn"
                     type="button"
