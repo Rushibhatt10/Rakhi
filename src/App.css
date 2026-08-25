@@ -1140,6 +1140,18 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
   .final { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
 }
 
+/* Keep the live phone feed natural: no crop, zoom, mirror, or filter. */
+.cameraExperience .magicViewport video {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+  filter: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
