@@ -41,13 +41,14 @@ function GiftCamera({ onOpenChange, onReveal }) {
 
   const openCamera = async (requestedFacingMode = facingMode) => {
     setCameraState('requesting');
-    if (!navigator.mediaDevices?.getUserMedia) { setCameraState('error'); return; }
+    stopStream();
+    if (!window.isSecureContext || !navigator.mediaDevices?.getUserMedia) { setCameraState('error'); return; }
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: requestedFacingMode, width: { ideal: 1080 }, height: { ideal: 1920 } }, audio: false });
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: requestedFacingMode }, width: { ideal: 1080 }, height: { ideal: 1920 } }, audio: false });
       streamRef.current = stream;
       setCameraState('scanning');
       timersRef.current.push(window.setTimeout(() => setCameraState('ready'), 1200));
-    } catch (error) { console.warn('Camera permission or device error:', error); setCameraState('error'); }
+    } catch (error) { console.warn('Camera permission or device error:', error); stopStream(); setCameraState('error'); }
   };
 
   const closeCamera = () => { clearTimers(); stopStream(); setPhotoShots([]); setShotNumber(0); setFlowMessage(''); setCountdown(null); setCameraState('idle'); };
@@ -57,8 +58,11 @@ function GiftCamera({ onOpenChange, onReveal }) {
 
 
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: nextMode, width: { ideal: 1080 }, height: { ideal: 1920 } }, audio: false });
-      stopStream(); streamRef.current = stream; setFacingMode(nextMode); setShotNumber((number) => number + 1);
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: nextMode }, width: { ideal: 1080 }, height: { ideal: 1920 } }, audio: false });
+      const previousStream = streamRef.current;
+      streamRef.current = stream;
+      previousStream?.getTracks().forEach((track) => track.stop());
+      setFacingMode(nextMode); setShotNumber((number) => number + 1);
     } catch (error) { console.warn('Unable to flip camera:', error); }
   };
 

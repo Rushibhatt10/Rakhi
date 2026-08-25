@@ -753,6 +753,7 @@ button:focus-visible { outline: 3px solid #8bf5ff; outline-offset: 4px; }
 .cameraExperience { z-index: 100; isolation: isolate; background-color: #100d18; }
 .magicViewport { isolation: isolate; background: #05050a; }
 .magicViewport video { position: relative; z-index: 1; background: #05050a; }
+.magicViewport video { min-width: 100%; min-height: 100%; object-position: center; }
 
 .openGiftCam { margin-top: 20px; padding: 15px 22px; }
 .cameraExperience { position: fixed; z-index: 99999; isolation: isolate; inset: 0; display: flex; flex-direction: column; overflow: auto; padding: max(24px, env(safe-area-inset-top)) 6vw max(24px, env(safe-area-inset-bottom)); background: #100d18; opacity: 1; animation: fadeIn .3s ease both; }
