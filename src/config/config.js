@@ -17,7 +17,7 @@ export const assetUrl = (path) => `${import.meta.env.BASE_URL}${path}`;
 
 const config = {
   giftAmount: 'Chocolates',
-  giftBurstDuration: 30000,
+  giftBurstDuration: 5600,
   giftBurstQuantity: 50,
   photoBoothConfig: {
     defaultName: 'Rushi',

@@ -1185,17 +1185,17 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
 .lightboxNext { right: 5vw; }
 
 /* Gift Burst Confetti */
-.giftBurst { position: fixed; z-index: 25; inset: 0; overflow: hidden; pointer-events: none; perspective: 700px; }
+.giftBurst { position: fixed; z-index: 2147483647; inset: 0; overflow: hidden; pointer-events: none; perspective: 700px; }
 .giftObject {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: clamp(58px, 8vw, 110px);
-  height: clamp(50px, 7vw, 88px);
+  width: clamp(120px, 15vw, 220px);
+  height: clamp(110px, 13vw, 200px);
   display: grid;
   place-items: center;
   background: transparent;
-  animation: fly var(--gift-duration, var(--burst-duration, 12000ms)) cubic-bezier(.12,.7,.25,1) var(--gift-delay, 0s) both;
+  animation: giftFly var(--gift-duration, var(--burst-duration, 5600ms)) cubic-bezier(.12,.7,.25,1) var(--gift-delay, 0s) both;
   will-change: transform, opacity;
 }
 .giftObject img {
@@ -1257,6 +1257,12 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
 @keyframes slideDown {
   from { opacity: 0; transform: translate(-50%, -15px); }
   to { opacity: 1; transform: translate(-50%, 0); }
+}
+@keyframes giftFly {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.2) rotate(0deg); }
+  8% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  78% { opacity: 1; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(var(--gift-scale)) rotate(var(--r)); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(calc(var(--gift-scale) * .92)) rotate(var(--r)); }
 }
 
 .animate-pop-in { animation: popIn .4s cubic-bezier(.2,.8,.2,1) both; }
@@ -1330,5 +1336,9 @@ button:focus-visible { outline: 3px solid var(--neon-cyan); outline-offset: 4px;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: .01ms !important;
+  }
+  .giftBurst .giftObject {
+    animation-duration: var(--gift-duration, 5600ms) !important;
+    animation-iteration-count: 1 !important;
   }
 }
